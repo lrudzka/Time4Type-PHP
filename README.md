@@ -27,7 +27,7 @@ Other technologies used by me for this project: HTML5, CSS, JavaScript, Bootstra
 
 The application uses Fetch to get data from free football API. 
 
-The application uses Google reCAPTCHA Component for protecting the application from bots.
+The application uses Google reCAPTCHA Component for protecting the application against bots.
 
 Connections to the mySQL database are established by creating instances of the PDO base class.
 
