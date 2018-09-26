@@ -2,7 +2,7 @@
 Application for typing results of football matches, created using PHP & mySQL DB
 
 ## Description
-Application for typing results of football matches. It works for the current football event - which now is the Champions League 2018/2019.
+Application for typing results of football matches. It works for the current football event - which now is the Champions League 2018/2019. With just few steps it will be avalaible to work for any other football event, supported by the choosen football API.
 
 ### Options available to an unlogged user:
 
