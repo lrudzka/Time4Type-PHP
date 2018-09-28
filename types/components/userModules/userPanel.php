@@ -33,6 +33,7 @@
             ?>
             <h3><a href="addTypes.php">Wprowadź nowe typy</a></h3>
             <h3><a href="userTypes.php">Historia typowania</a></h3>
+            <h3><a href="changeUserData.php">Zmiana danych</a></h3>
             <h3><a href="../../index.php">Strona główna</a></h3>
             <h3><a href="logout.php">Wyloguj się</a></h3>
             <br/>
