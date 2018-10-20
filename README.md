@@ -12,6 +12,7 @@ Application for typing results of football matches. It works for the current foo
 - ranking of the users
 - registering a new user to the database
 - login to the database
+- recovering access to the account - after entering the e-mail address
 
 ### Options available to a logged user:
 
@@ -32,6 +33,8 @@ The application uses Google reCAPTCHA Component for protecting the application a
 Connections to the mySQL database are established by creating instances of the PDO base class.
 
 Users' passwords are hashed, and the database is protected against sql injection.
+
+The application uses PHPMailer for sending e-mail - in the case of user's forgotten password.
 
 ## RWD
 

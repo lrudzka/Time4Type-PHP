@@ -60,6 +60,9 @@ div.background {
 div.background a {
     color: white;
 }
+div.background a.newPwd {
+    color: #333;
+}
 div.background a:clicked {
     color: white;
 }
@@ -212,4 +215,7 @@ span.wrongData {
     background-color: red;
     font-size: 15px;
     padding: 2px;
+}
+h3#newPwd a {
+    color: black;
 }

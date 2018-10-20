@@ -85,6 +85,11 @@
                 </div>
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-6">
+                        <h3>Nie pamiętasz hasła? <a class="btn btn-default newPwd" href="sendEmail.php">Kliknij tutaj</a></h3>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-6">
                         <?php
                             if (isset($_SESSION['badAttempt']))
                             {

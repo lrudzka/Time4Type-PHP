@@ -26,11 +26,11 @@
             <div class="table-responsive">
                 <table class="table history" id='history'>
                     <tr>
-                        <th><span class="sort">Data</span>   <button class='sortDown sort btn btn-succes btn-lg'></button></th>
+                        <th class="center"><span class="sort">Data</span>   <button class='sortDown sort btn btn-succes btn-lg'></button></th>
                         <th class="home">Gospodarze</th>
                         <th></th>
                         <th class="away">Goście</th>
-                        <th>Wynik</th>
+                        <th class="center">Wynik</th>
                     </tr>
                     <?php
                         $counter = 0;

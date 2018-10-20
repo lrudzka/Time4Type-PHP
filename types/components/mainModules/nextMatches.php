@@ -25,11 +25,11 @@
             <div class="table-responsive">
                 <table class="table">
                     <tr>
-                        <th>Data</th>
-                        <th>Godzina</th>
-                        <th>Gospodarze</th>
+                        <th class="center">Data</th>
+                        <th class="center">Godzina</th>
+                        <th class="home">Gospodarze</th>
                         <th></th>
-                        <th>Goście</th>
+                        <th class="away">Goście</th>
                     </tr>
                     <?php
                     
@@ -53,16 +53,16 @@
                         {
                             $fullDate = $match->utcDate;
                             $matchDate = substr($fullDate,0,10 );
-                            // dodaję dwie godziny, żeby czas był poprawny
+                            // dodaję dwie godziny, żeby czas był poprawny dla naszej strefy czasowej
                             $matchHour = substr($fullDate, 11, 2)+2;
                             $matchMin = substr($fullDate, 14, 2);
                             
                             echo '<tr class="type">';
                             echo '<td>'.$matchDate.'</td>';
                             echo '<td>'.$matchHour.':'.$matchMin.'</td>';
-                            echo '<td>'.$match->homeTeam->name.'</td>';
+                            echo '<td class="home">'.$match->homeTeam->name.'</td>';
                             echo '<td>:</td>';
-                            echo '<td>'.$match->awayTeam->name.'</td>';
+                            echo '<td class="away">'.$match->awayTeam->name.'</td>';
                             echo '</tr>';
                         }
             
