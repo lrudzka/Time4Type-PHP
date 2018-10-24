@@ -72,6 +72,7 @@
             
             <br/>
             <h3><a href="../../index.php">Strona główna</a></h3>
+            <br/>
         </section>
     </div>
     <?php include "../templates/footer.php"; ?>

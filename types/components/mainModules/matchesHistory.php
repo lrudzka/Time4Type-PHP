@@ -13,6 +13,7 @@
     <title>Time4Type</title>
     
     <link rel="stylesheet" href="../../css/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="../../css/bootstrap/style.css">
     <link rel="stylesheet" href="../../css/main.css">
     <link href="https://fonts.googleapis.com/css?family=Kalam" rel="stylesheet">
 </head>
@@ -55,7 +56,7 @@
                             echo '<td class="home">'.$match->homeTeam->name.'</td>';
                             echo '<td>:</td>';
                             echo '<td class="away">'.$match->awayTeam->name.'</td>';
-                            echo '<td>'.$match->score->fullTime->homeTeam.' : '.$match->score->fullTime->awayTeam.'</td>';
+                            echo '<td>'.$match->score->fullTime->homeTeam.' : '.$match->score->fullTime->awayTeam.' <img src="../../img/blink-green.gif" class="blinkGreen break" alt="blinking green light"></td>';
                             echo '</tr>';
                             $counter = $counter+1;
                         }

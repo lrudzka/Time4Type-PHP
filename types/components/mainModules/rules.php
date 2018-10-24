@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="../../css/bootstrap/bootstrap.min.css">
     <link rel="stylesheet" href="../../css/main.css">
     <link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
+     <link href="https://fonts.googleapis.com/css?family=Kalam" rel="stylesheet">
 </head>
 
 <body>
@@ -31,7 +32,7 @@
                 <li>Za poprawne wskazanie zwycięzcy meczu gracz otrzymuje 1 punkt</li>
                 <li>Za poprawne wytypowanie remisu gracz otrzymuje 1 punkt</li>
                 <li>Aby zmienić swój typ należy go najpierw usunąć z listy</li>
-                <li>Typy można wprowadzać dla meczów, które jeszcze się nie zaczęły</li>
+                <li>Typy można wprowadzać dla meczów, które jeszcze się nie rozpoczęły</li>
                 <li>Typujemy wyniki uzyskane w regulaminowym czasie gry</li>
             </ol>
             <br/>

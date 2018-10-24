@@ -43,40 +43,6 @@ CREATE TABLE `types_types` (
   `points` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Zrzut danych tabeli `types_types`
---
-
-INSERT INTO `types_types` (`id`, `user`, `matchId`, `matchDate`, `homeTeamName`, `awayTeamName`, `homeTeamType`, `awayTeamType`, `homeTeamResult`, `awayTeamResult`, `status`, `points`) VALUES
-(24, 'Lucyna', 250718, '2018-09-19', 'Sport Lisboa e Benfica', 'FC Bayern München', 1, 2, 0, 2, 'CLOSED', 1),
-(26, 'Lucyna', 250730, '2018-09-19', 'Manchester City FC', 'Olympique Lyonnais', 2, 2, 1, 2, 'CLOSED', 0),
-(27, 'Lucyna', 250741, '2018-09-19', 'Real Madrid CF', 'AS Roma', 3, 0, 3, 0, 'CLOSED', 3),
-(31, 'Lucyna', 250753, '2018-09-19', 'Valencia CF', 'Juventus FC', 0, 3, 0, 2, 'CLOSED', 1),
-(33, 'Lucyna', 250754, '2018-09-19', 'BSC Young Boys', 'Manchester United FC', 0, 3, 0, 3, 'CLOSED', 3),
-(36, 'ToNieJa', 250718, '2018-09-19', 'Sport Lisboa e Benfica', 'FC Bayern München', 1, 3, 0, 2, 'CLOSED', 1),
-(37, 'ToNieJa', 250730, '2018-09-19', 'Manchester City FC', 'Olympique Lyonnais', 3, 0, 1, 2, 'CLOSED', 0),
-(38, 'ToNieJa', 250741, '2018-09-19', 'Real Madrid CF', 'AS Roma', 2, 1, 3, 0, 'CLOSED', 1),
-(40, 'ToNieJa', 250753, '2018-09-19', 'Valencia CF', 'Juventus FC', 0, 3, 0, 2, 'CLOSED', 1),
-(41, 'ToNieJa', 250754, '2018-09-19', 'BSC Young Boys', 'Manchester United FC', 0, 2, 0, 3, 'CLOSED', 1),
-(44, 'VIPantonio', 250717, '2018-09-19', 'AFC Ajax', 'PAE AEK', 2, 1, 3, 0, 'CLOSED', 1),
-(45, 'VIPantonio', 250729, '2018-09-19', 'FK Shakhtar Donetsk', 'TSG 1899 Hoffenheim', 2, 1, 2, 2, 'CLOSED', 0),
-(46, 'VIPantonio', 250718, '2018-09-19', 'Sport Lisboa e Benfica', 'FC Bayern München', 0, 2, 0, 2, 'CLOSED', 3),
-(47, 'VIPantonio', 250730, '2018-09-19', 'Manchester City FC', 'Olympique Lyonnais', 4, 0, 1, 2, 'CLOSED', 0),
-(48, 'VIPantonio', 250741, '2018-09-19', 'Real Madrid CF', 'AS Roma', 2, 1, 3, 0, 'CLOSED', 1),
-(50, 'VIPantonio', 250753, '2018-09-19', 'Valencia CF', 'Juventus FC', 0, 2, 0, 2, 'CLOSED', 3),
-(51, 'VIPantonio', 250754, '2018-09-19', 'BSC Young Boys', 'Manchester United FC', 0, 3, 0, 3, 'CLOSED', 3),
-(52, 'Andrzej', 250717, '2018-09-19', 'AFC Ajax', 'PAE AEK', 3, 2, 3, 0, 'CLOSED', 1),
-(53, 'Andrzej', 250729, '2018-09-19', 'FK Shakhtar Donetsk', 'TSG 1899 Hoffenheim', 2, 0, 2, 2, 'CLOSED', 0),
-(54, 'Andrzej', 250718, '2018-09-19', 'Sport Lisboa e Benfica', 'FC Bayern München', 0, 3, 0, 2, 'CLOSED', 1),
-(55, 'Andrzej', 250730, '2018-09-19', 'Manchester City FC', 'Olympique Lyonnais', 2, 1, 1, 2, 'CLOSED', 0),
-(56, 'Andrzej', 250741, '2018-09-19', 'Real Madrid CF', 'AS Roma', 2, 1, 3, 0, 'CLOSED', 1),
-(58, 'Andrzej', 250753, '2018-09-19', 'Valencia CF', 'Juventus FC', 0, 2, 0, 2, 'CLOSED', 3),
-(59, 'Andrzej', 250754, '2018-09-19', 'BSC Young Boys', 'Manchester United FC', 1, 3, 0, 3, 'CLOSED', 1),
-(60, 'Lucyna', 250717, '2018-09-19', 'AFC Ajax', 'PAE AEK', 4, 0, 3, 0, 'CLOSED', 1),
-(61, 'Lucyna', 250729, '2018-09-19', 'FK Shakhtar Donetsk', 'TSG 1899 Hoffenheim', 2, 0, 2, 2, 'CLOSED', 0),
-(62, 'Lucyna', 250742, '2018-09-19', 'FC Viktoria Plzeň', 'PFC CSKA Moskva', 0, 2, 2, 2, 'CLOSED', 0);
-
--- --------------------------------------------------------
 
 --
 -- Struktura tabeli dla tabeli `types_users`
@@ -88,15 +54,6 @@ CREATE TABLE `types_users` (
   `email` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Zrzut danych tabeli `types_users`
---
-
-INSERT INTO `types_users` (`login`, `password`, `email`) VALUES
-('Andrzej', '$2y$10$eAX3itOIcPLOtPiJe9y7seMft3eEYCBsqJE.UaP3eS931wJtnqXxK', 'arudzki@onet.pl'),
-('Lucyna', '$2y$10$celuxyL4PCCWkSstVtJc/uhi3uHlVUBUhbQP4EQ4g6a9PNzR.3bfC', 'lrudzka@onet.eu'),
-('ToNieJa', '$2y$10$xXTMs8.MRh1vL8XZsIWzXOif0.wBS3qawbGfH.VkzuLrlHyGjPgzy', 'rudzki.maciek@gmail.com'),
-('VIPantonio', '$2y$10$O3y.AVnLWwGqPWRt0Lqd8.zTAAvUEcf2K2/iFMjkXsBCbloaEPlnW', 'antek.rudzki@gmail.com');
 
 -- --------------------------------------------------------
 

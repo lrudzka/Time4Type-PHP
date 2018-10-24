@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="../../css/bootstrap/bootstrap.min.css">
     <link rel="stylesheet" href="../../css/main.css">
     <link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
+     <link href="https://fonts.googleapis.com/css?family=Kalam" rel="stylesheet">
 </head>
 
 <body>

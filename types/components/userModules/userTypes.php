@@ -53,6 +53,8 @@
     $userOpenTypes = $userOpenTypesQuery->fetchAll();
     $userClosedTypesQuery = $db->query('SELECT * FROM types_types WHERE (status="CLOSED" OR status="IN_PLAY") AND user="'.$_SESSION['userLoggedIn'].'" ORDER BY matchDate DESC');
     $userClosedTypes = $userClosedTypesQuery->fetchAll();
+    $userPointsQuery = $db->query('SELECT points from types_view_points WHERE user = "'.$_SESSION['userLoggedIn'].'"');
+    $userPoints = $userPointsQuery -> fetch();
     
   
 ?>
@@ -68,6 +70,8 @@
     
     <link rel="stylesheet" href="../../css/bootstrap/bootstrap.min.css">
     <link rel="stylesheet" href="../../css/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Kalam" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
 </head>
 
@@ -117,11 +121,16 @@
             </div>
             
             <h3 class="title">Typy zamknięte</h3>
-            <input type="text" class="form-control searchTeam" placeholder="Wyszukaj drużynę">
-            
-                
+            <section class="closedTypesHeader">             
+                <input type="text" class="form-control searchTeam" placeholder="Wyszukaj drużynę">
+                <h4 class="sum"><strong>Suma zdobytych punktów: <?php
+                    echo $userPoints['points'];
+                    ?></strong>
+                </h4>
+            </section>
+               
             <div class="table-responsive">
-                <table class="table history">
+                <table class="table  history">
                     <tr>
                         <th class="center"><span class="sort">Data</span> <button  class="sortUp btn sort btn-succes btn-lg"></button></th>
                         <th class="home">Gospodarze</th>
@@ -147,7 +156,7 @@
                             echo "<td>{$userClosedType['homeTeamResult']} : {$userClosedType['awayTeamResult']}</td>";
                             if ($userClosedType['status']=='IN_PLAY')
                             {
-                                echo "<td>mecz w trakcie</td>";
+                                echo '<td><img src="../../img/blink-green.gif" class="blinkGreen" alt="blinking green light"></td>';
                             }
                             else
                             {

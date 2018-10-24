@@ -7,6 +7,14 @@
     use PHPMailer\PHPMailer\PHPMailer;
     use PHPMailer\PHPMailer\Exception;
     
+    function randLetter()
+{
+    $int = rand(0,51);
+    $a_z = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    $rand_letter = $a_z[$int];
+    return $rand_letter;
+}
+    
     if (isset($_SESSION['userLoggedIn']))
     {
         header ('Location: userPanel.php');
@@ -52,7 +60,7 @@
             //nowe hasło
             $randomNum1 = rand(100,999);
             $randomNum2 = rand(1000,9999);
-            $newPwd = $randomNum1.'jkjfeoilx'.$randomNum2;
+            $newPwd = $randomNum1.randLetter().randLetter().randLetter().randLetter().randLetter().randLetter().randLetter().randLetter().$randomNum2;
             $newPwd_hash = password_hash($newPwd, PASSWORD_DEFAULT);
             $queryPwd = $db->prepare('UPDATE types_users set password=:password WHERE email=:email');
             $queryPwd->bindValue(':password', $newPwd_hash, PDO::PARAM_STR);
@@ -67,11 +75,11 @@
                 //Server settings
                 $mail->SMTPDebug = 0;                                 // Enable verbose debug output
                 $mail->isSMTP();                                      // Set mailer to use SMTP
-                $mail->Host = 'host_name';                          // Specify main and backup SMTP servers
+                $mail->Host = '...';                          // Specify main and backup SMTP servers
                 $mail->SMTPAuth = true;                               // Enable SMTP authentication
-                $mail->Username = 'user_name';                 // SMTP username
-                $mail->Password = 'password';                           // SMTP password
-                $mail->SMTPSecure = 'tls/ssl';                            // Enable TLS encryption, `ssl` also accepted
+                $mail->Username = '.....';                 // SMTP username
+                $mail->Password = '.....';                           // SMTP password
+                $mail->SMTPSecure = '.....';                            // Enable TLS encryption, `ssl` also accepted
                 $mail->Port = 465;                                    // TCP port to connect to
                 $mail->CharSet = 'utf8';
 
@@ -112,6 +120,8 @@
     
     <link rel="stylesheet" href="../../css/bootstrap/bootstrap.min.css">
     <link rel="stylesheet" href="../../css/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Kalam" rel="stylesheet">
 </head>
 
 <body>

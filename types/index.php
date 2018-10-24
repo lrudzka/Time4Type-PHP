@@ -11,7 +11,7 @@
     $end = '2019-06-30'; 
     $response = $api->findMatchesForDateRange($start, $end);
     
-    $nextMatchDate = "";
+    $nextMatchDate;
     foreach ($response->matches as $match)
     {
         $nextMatchDate = $match->utcDate;
@@ -38,8 +38,8 @@
 
     <title>Time4Type</title>
 
-    <link rel="stylesheet" href="../../css/bootstrap/bootstrap.min.css">    
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css"> 
+    <link rel="stylesheet" href="css/main.css">
     <link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Kalam" rel="stylesheet">
 </head>
@@ -61,7 +61,8 @@
             <br/>
             <section id="info">
                 
-                <table class="table ">
+                <table class=" table">
+                    
                     <tr>
                         <td class="infoTitle"> Aktualny turniej: </td>
                         <td class="infoData"> Liga Mistrzów 2018/2019</td>
