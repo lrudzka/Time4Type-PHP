@@ -76,6 +76,7 @@
         <section class="main_width">
             
             <?php
+                $timeDiff = date("Z")/3600; // przesunięcie godzinowe dla naszej strefy czasowej
                 // Create instance of API class
                 $api = new FootballData();
                 // fetch all available upcoming matches for the next 3 days
@@ -118,8 +119,8 @@
 
                                 $fullDate = $match->utcDate;
                                 $matchDate = substr($fullDate,0,10 );
-                                // dodaję dwie godziny, żeby czas był poprawny
-                                $matchHour = substr($fullDate, 11, 2)+2;
+                                // dodaję przesunięcie godzinowe
+                                $matchHour = substr($fullDate, 11, 2)+$timeDiff;
                                 $matchMin = substr($fullDate, 14, 2);
 
                                 echo '<tr class="type">';
