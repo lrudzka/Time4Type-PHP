@@ -111,7 +111,7 @@
                             echo "<td>:</td>";
                             echo "<td class=".'"away"'.">{$userOpenType['awayTeamName']}</td>";
                             echo "<td>{$userOpenType['homeTeamType']} : {$userOpenType['awayTeamType']}</td>";
-                            echo "<td><a href=".'"'."deleteType.php?matchId={$userOpenType['matchId']}".'"'." class=".'"btn btn-danger btn-sm"'.">x</a></td>";
+                            echo "<td><a href=".'"'."deleteType.php?matchId={$userOpenType['matchId']}".'"'." class=".'"btn btn-danger btn-sm del"'.">x</a></td>";
                         echo '</tr>';
 
                     }

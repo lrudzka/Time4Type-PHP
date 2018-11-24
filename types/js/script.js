@@ -89,4 +89,20 @@ document.addEventListener('DOMContentLoaded', function () {
         }
         
     });
+
+    for (var i=0; i<deleteBtn.length; i++)
+    {
+        deleteBtn[i].addEventListener("click", function(e){
+            var tableRow = e.target.parentElement.parentElement;
+            var homeTeam = tableRow.querySelector("td.home").innerHTML;
+            var awayTeam = tableRow.querySelector("td.away").innerHTML;
+            var game = homeTeam+" : "+awayTeam;
+            
+            if (!confirm("Czy na pewno chcesz usunąć swój typ dla meczu "+game+" ?"))
+            {
+                e.preventDefault();
+            }
+            
+        });
+    }
 });
