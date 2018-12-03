@@ -72,7 +72,7 @@ Application for typing results of football matches. It works for the current foo
 ![typing history page](https://zapodaj.net/images/eb6531253a4f0.jpg "typing history page")
 
 * **_USER DATA CHANGE_**
-  - allowing the user to change his e-mail address, or/and to change his password 
+  - allowing the user to change his e-mail address, change his password, and turn OFF/ON mailing service. 
 
 
 ## How does the application work?
@@ -80,6 +80,7 @@ Application for typing results of football matches. It works for the current foo
   - the code calculating the users' scores works in three modules - in the ones showing the users scores: _Main page_, _Ranking_, _User's types_, the procedure checks the users's types with _open_ status in the list of the games got from the API: 
     - if the API data shows that the game is in play, the type's status is being updated for the _in play_ status, and the game's score is being updated for the current result of the match - and the type is no longer available for any changes
     - if the API data shows that the game is finished, the type's status is being updated for the _finished_ status, and the points are being calculated, according to the rules (0, 1 or 3 points)
+    - the applications sends reminding e-mail to the users with the enabled mailing service (default value) about incoming matches two days before the games.
 
 
 ## Technologies

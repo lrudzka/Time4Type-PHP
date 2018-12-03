@@ -3,14 +3,15 @@
     $_SESSION['level']='1.1';
     require_once '../configModules/database.php';
     
-    include '../configModules/FootballData.php';
+    include '../configModules/autoloader.php';
     
     $api = new FootballData();
+    $event = new CurrentEvent();
     
     // updatujemy dane dla zakończonych meczów
     // ściągamy wszystkie zakończone mecze - od rozpoczęcia głównych rozgrywek, i updatujemy
     // tabelę z typami
-    $start = '2018-09-17';
+    $start = $event::START_DATE;;
     $end = new DateTime(); 
     $response = $api->findMatchesFinished($start, $end->format('Y-m-d'));
     foreach ($response->matches as $match)

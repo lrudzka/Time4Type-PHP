@@ -15,7 +15,7 @@
     catch(PDOException $error)
     {
         //wersja deweloperska:
-        echo $error;
+       // echo $error;
 
         //wersja widoczna dla końcowych użytkowników:
         exit('Database error');

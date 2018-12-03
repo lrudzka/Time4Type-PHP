@@ -100,6 +100,13 @@
 
     }
     
+    if (isset($_POST['mailing']))
+    {
+        $updateMailing = $db-> prepare('UPDATE types_users set mailing=:mailing WHERE login="'.$_SESSION['userLoggedIn'].'"');
+        $updateMailing->bindValue(':mailing', $_POST['mailing'], PDO::PARAM_STR);
+        $updateMailing->execute();
+    }
+    
     $userQuery = $db->query('SELECT * FROM types_users WHERE login="'.$_SESSION['userLoggedIn'].'"');
     $userData = $userQuery->fetch();
     
@@ -229,6 +236,52 @@
                     }
                 ?>
             </div>
+            <br/>
+            <h2>Wysyłka powiadomień</h2>
+            <form method="post" class="form-horizontal">
+                <div class="form-group">
+                    <div class="col-sm-offset-3 col-sm-6">
+                        <?php
+                            if ($userData['mailing']==1)
+                            {
+                                echo "usługa włączona";
+                            } 
+                            else
+                            {
+                                echo "usługa wyłączona";
+                            }
+                            ?>
+                    </div>
+                    <div class="col-sm-offset-3 col-sm-6">
+                        <input type="number" class="hidden" name="mailing" value=<?php
+                            if ($userData['mailing']==1)
+                            {
+                                echo 0;
+                            } 
+                            else
+                            {
+                                echo 1;
+                            }
+                            ?>
+                        > 
+                        
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-3 col-sm-10">
+                    <input type="submit" <?php
+                            if ($userData['mailing']==1)
+                            {
+                                echo 'class="btn btn-danger" value="WYŁĄCZ"';
+                            } 
+                            else
+                            {
+                                echo 'class="btn btn-success" value="WŁĄCZ"';
+                            }
+                            ?>>
+                    </div>
+                </div>
+            </form>
             <br/>
             <h3><a href="userPanel.php">Panel użytkownia</a></h3>
             <br/>

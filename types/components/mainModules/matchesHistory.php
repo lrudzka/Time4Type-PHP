@@ -36,12 +36,13 @@
                     <?php
                         $counter = 0;
                     
-                        include '../configModules/FootballData.php';
+                        include '../configModules/autoloader.php';
                         
+                        $event = new CurrentEvent();
                         $api = new FootballData();
 
                         // ściągamy wszystkie trwające mecze 
-                        $start = '2018-09-17';
+                        $start = $event::START_DATE;
                         $end = new DateTime(); 
                         $response = $api->findMatchesInPlay($start, $end->format('Y-m-d'));
                         if (!$response)

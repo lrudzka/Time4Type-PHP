@@ -33,15 +33,16 @@
                     </tr>
                     <?php
                     
-                        include '../configModules/FootballData.php';
+                        include '../configModules/autoloader.php';
                         
                         $api = new FootballData();
+                        
+                        $timeDiff = date('Z')/3600; // przesunięcie godzinowe dla naszej strefy czasowej
 
                         // ściągamy wszystkie zakończone mecze - od rozpoczęcia głównych rozgrywek, 
                         $now = new DateTime();
                         $end = new DateTime(); $end->add(new DateInterval('P3D')); 
                         $response = $api->findMatchesForDateRange($now->format('Y-m-d'), $end->format('Y-m-d'));
-                        $timeDiff = date("Z")/3600; // przesunięcie godzinowe dla naszej strefy czasowej
                         if (!$response)
                         {
                             echo '<span class="error"> Chwilowy brak połączenia z serwerem</span>';
@@ -54,7 +55,7 @@
                         {
                             $fullDate = $match->utcDate;
                             $matchDate = substr($fullDate,0,10 );
-                            // dodaję przesunięcie godzinowe
+                            // dodaję przesunięcie godzinowe, żeby czas był poprawny dla naszej strefy czasowej
                             $matchHour = substr($fullDate, 11, 2)+$timeDiff;
                             $matchMin = substr($fullDate, 14, 2);
                             

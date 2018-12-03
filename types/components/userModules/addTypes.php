@@ -8,7 +8,7 @@
         header ('Location: login.php');
     }
     
-    include '../configModules/FootballData.php';
+    include '../configModules/autoloader.php';
     
     require_once '../configModules/database.php';
     
@@ -76,13 +76,13 @@
         <section class="main_width">
             
             <?php
-                $timeDiff = date("Z")/3600; // przesunięcie godzinowe dla naszej strefy czasowej
                 // Create instance of API class
                 $api = new FootballData();
                 // fetch all available upcoming matches for the next 3 days
                 $now = new DateTime();
                 
                 $end = new DateTime(); $end->add(new DateInterval('P3D'));
+                $timeDiff = date('Z')/3600; // przesunięcie godzinowe dla naszej strefy czasowej
                 $response = $api->findMatchesForDateRange($now->format('Y-m-d'), $end->format('Y-m-d'));
                 if (!$response)
                 {
@@ -103,6 +103,7 @@
                             <th class="center" colspan="3">Wrowadź swoje typy</th>
                         </tr>
                             <?php $i=1;
+                            
                             foreach ($response->matches as $match) { 
 
                                 //sprawdzamy, czy dany użytkownik ma już wprowadzony typ dla danego meczu
@@ -119,7 +120,7 @@
 
                                 $fullDate = $match->utcDate;
                                 $matchDate = substr($fullDate,0,10 );
-                                // dodaję przesunięcie godzinowe
+                                // dodaję przesunięcie godzinowe, żeby czas był poprawny
                                 $matchHour = substr($fullDate, 11, 2)+$timeDiff;
                                 $matchMin = substr($fullDate, 14, 2);
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Czas generowania: 24 Wrz 2018, 08:43
+-- Czas generowania: 03 Gru 2018, 13:26
 -- Wersja serwera: 10.1.34-MariaDB
 -- Wersja PHP: 7.2.8
 
@@ -43,6 +43,7 @@ CREATE TABLE `types_types` (
   `points` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+-- --------------------------------------------------------
 
 --
 -- Struktura tabeli dla tabeli `types_users`
@@ -51,12 +52,11 @@ CREATE TABLE `types_types` (
 CREATE TABLE `types_users` (
   `login` varchar(30) NOT NULL,
   `password` varchar(100) NOT NULL,
-  `email` varchar(100) NOT NULL
+  `email` varchar(100) NOT NULL,
+  `mailing` tinyint(1) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-
 -- --------------------------------------------------------
-
 --
 -- Zastąpiona struktura widoku `types_view_points`
 -- (Zobacz poniżej rzeczywisty widok)
@@ -100,7 +100,7 @@ ALTER TABLE `types_users`
 -- AUTO_INCREMENT dla tabeli `types_types`
 --
 ALTER TABLE `types_types`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -2,13 +2,15 @@
     session_start();
     $_SESSION['level']='0';
     
-    include 'components/configModules/FootballData.php';
+    include 'components/configModules/autoloader.php';
                         
     $api = new FootballData();
+    $event = new CurrentEvent();
 
     // ściągamy mecze o statusie "SCHEDULED" - żeby sprawdzić datę następnego meczu
-    $start = '2018-09-17';
-    $end = '2019-06-30'; 
+    $start = $event::START_DATE;
+    $end = $event::END_DATE;
+    $_SESSION['name'] = $event::EVENT_NAME;
     $response = $api->findMatchesForDateRange($start, $end);
     
     $nextMatchDate;
@@ -65,7 +67,9 @@
                     
                     <tr>
                         <td class="infoTitle"> Aktualny turniej: </td>
-                        <td class="infoData"> Liga Mistrzów 2018/2019</td>
+                        <td class="infoData"> <?php
+                            echo $_SESSION['name'];
+                        ?></td>
                     </tr>
                     <tr>
                         <td class="infoTitle"> Data następnego meczu: </td>
