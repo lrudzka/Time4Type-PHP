@@ -2,14 +2,14 @@
     session_start();
     $_SESSION['level']='0';
     
-    include 'components/configModules/autoloader.php';
+    include "components/configModules/autoloader.php";
                         
     $api = new FootballData();
-    $event = new CurrentEvent();
 
     // ściągamy mecze o statusie "SCHEDULED" - żeby sprawdzić datę następnego meczu
+    $event = new CurrentEvent;
     $start = $event::START_DATE;
-    $end = $event::END_DATE;
+    $end = $event::END_DATE; 
     $_SESSION['name'] = $event::EVENT_NAME;
     $response = $api->findMatchesForDateRange($start, $end);
     
@@ -23,9 +23,41 @@
     $nextMatchDate = substr($nextMatchDate, 0, 10); 
     
     
-    
-    
     require_once 'components/configModules/database.php';
+    $event = new CurrentEvent();
+    
+    // updatujemy dane dla zakończonych meczów
+    // ściągamy wszystkie zakończone mecze - od rozpoczęcia głównych rozgrywek, i updatujemy
+    // tabelę z typami
+    $start = $event::START_DATE;
+    $end = new DateTime(); 
+    $response = $api->findMatchesFinished($start, $end->format('Y-m-d'));
+    foreach ($response->matches as $match)
+    {
+        $typesQuery = $db->prepare('UPDATE types_types SET status="FINISHED", homeTeamResult='.$match->score->fullTime->homeTeam.', awayTeamResult='.$match->score->fullTime->awayTeam.' WHERE status<>"CLOSED" AND status<>"FINISHED" AND matchId='.$match->id);
+        $typesQuery->execute();    
+    }
+    // ściągamy mecze w trakcie - i updatujemy tabelę z typami
+    $response = $api->findMatchesInPlay($start, $end->format('Y-m-d'));
+    foreach ($response->matches as $match)
+    {
+        $typesQuery = $db->prepare('UPDATE types_types SET status="IN_PLAY" WHERE status<>"CLOSED" AND status<>"FINISHED" AND matchId='.$match->id);
+        $typesQuery->execute();    
+    }
+    
+    //rozliczamy punkty i wstawiamy status "CLOSED" - tam, gdzie mecze są już zakończone
+    // 3 punkty za prawidłowy wynik
+    $close1Query = $db->prepare('UPDATE types_types SET points=3, status="CLOSED" WHERE status="FINISHED" AND homeTeamType=homeTeamResult AND awayTeamType=awayTeamResult');
+    $close1Query->execute();
+    // 1 punkt za poprawne wskazanie zwycięzcy bądź remisu
+    $close2Query = $db->prepare('update types_types set status="CLOSED", points=1 WHERE status="FINISHED" AND ( ( homeTeamType>awayTeamType AND homeTeamResult>awayTeamResult  ) OR ( homeTeamType<awayTeamType AND homeTeamResult<awayTeamResult) OR ( homeTeamType=awayTeamType AND homeTeamResult=awayTeamResult ))');
+    $close2Query->execute();
+    // 0 punktów za pozostałe typy
+    $close3Query = $db->prepare('update types_types set status="CLOSED", points=0 WHERE status="FINISHED" ');
+    $close3Query->execute();
+    
+    
+    
     $rankingQuery = $db->query('SELECT user FROM types_view_points WHERE points = (SELECT MAX(points) FROM types_view_points) ');
     $rankingRows = $rankingQuery->fetchAll();
     
