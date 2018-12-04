@@ -7,13 +7,7 @@
     use PHPMailer\PHPMailer\PHPMailer;
     use PHPMailer\PHPMailer\Exception;
     
-    function randLetter()
-{
-    $int = rand(0,51);
-    $a_z = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    $rand_letter = $a_z[$int];
-    return $rand_letter;
-}
+
     
     if (isset($_SESSION['userLoggedIn']))
     {
@@ -57,10 +51,9 @@
         if ($emailOk)
         {
             
-            //nowe hasło
-            $randomNum1 = rand(100,999);
-            $randomNum2 = rand(1000,9999);
-            $newPwd = $randomNum1.randLetter().randLetter().randLetter().randLetter().randLetter().randLetter().randLetter().randLetter().$randomNum2;
+            include "../configModules/autoloader.php";
+            $np = new NewPassword();
+            $newPwd = $np->setNewPassword();
             $newPwd_hash = password_hash($newPwd, PASSWORD_DEFAULT);
             $queryPwd = $db->prepare('UPDATE types_users set password=:password WHERE email=:email');
             $queryPwd->bindValue(':password', $newPwd_hash, PDO::PARAM_STR);
@@ -75,10 +68,10 @@
                 //Server settings
                 $mail->SMTPDebug = 0;                                 // Enable verbose debug output
                 $mail->isSMTP();                                      // Set mailer to use SMTP
-                $mail->Host = '***************';                          // Specify main and backup SMTP servers
+                $mail->Host = '*****************';                          // Specify main and backup SMTP servers
                 $mail->SMTPAuth = true;                               // Enable SMTP authentication
-                $mail->Username = '***************';                 // SMTP username
-                $mail->Password = '***************';                           // SMTP password
+                $mail->Username = '*****************';                 // SMTP username
+                $mail->Password = '*****************';                           // SMTP password
                 $mail->SMTPSecure = 'ssl';                            // Enable TLS encryption, `ssl` also accepted
                 $mail->Port = 465;                                    // TCP port to connect to
                 $mail->CharSet = 'utf8';
@@ -90,8 +83,16 @@
                 //Content
                 $mail->isHTML(true);                                  // Set email format to HTML
                 $mail->Subject = 'Zmiana hasła';
-                $mail->Body    = "Twoje nowe - tymczasowe - hasło do naszego serwisu to <b>$newPwd</b>, zaloguj się do serwisu i następnie ustaw sobie nowe hasło.";
-                $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+                $mail->Body    = "<div style=".'"font-size: 20px;"'.">Drogi użytkowniku serwisu TYPowisko</div><br/><br/>
+                                  <div style=".'"font-size: 18px;"'.">Twoje nowe - tymczasowe - hasło do naszego serwisu to:</div><br/> 
+                                  <div style=".'"font-size: 18px;"'.">$newPwd</div><br/>
+                                  <div style=".'"font-size: 18px;"'.">Zaloguj się do serwisu korzystając z podanego hasła, 
+                                            a następnie zmień je na nowe.
+                                  </div><br/>
+                                  <div style=".'"font-size: 18px;"'.">
+                                    <a href=".'"http://types.mycoding.eu/components/userModules/login.php"'.">*** Kliknij tutaj, aby przejść do aplikacji ***</a>
+                                  </div>";
+                $mail->AltBody = "Twoje nowe - tymczasowe - hasło do naszego serwisu to $newPwd, zaloguj się do serwisu i następnie ustaw sobie nowe hasło.";
 
                 $mail->send();
                 
