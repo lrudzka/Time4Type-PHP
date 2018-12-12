@@ -9,7 +9,7 @@ use PHPMailer\PHPMailer\Exception;
 
 
 require_once 'database.php';
-$usersQuery = $db->query('SELECT email FROM types_users WHERE login IN (SELECT user FROM types_types) AND mailing=1');
+$usersQuery = $db->query('SELECT email FROM types_users WHERE  mailing=1');
 $users = $usersQuery->fetchAll();
 
 
