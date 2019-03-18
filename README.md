@@ -15,7 +15,7 @@ Application for typing results of football matches. It works for the current foo
     - current ranking leader
   - links to the main modules
 
-![start page](https://zapodaj.net/images/6b32868843681.jpg "start page")
+![start page](https://s5.ifotos.pl/img/0t04jpg_qwqhwha.jpg "start page")
 
 * **_RANKING_**
   - showing actual ranking
@@ -29,8 +29,8 @@ Application for typing results of football matches. It works for the current foo
   - data sorting - by the date
   - data filtering - by the team name
 
-![matches history page](https://zapodaj.net/images/75f535a26f950.jpg "matches history")
-![matches history filtered page](https://zapodaj.net/images/84e46b48b16ba.jpg "matches history filtered")
+![matches history page](https://s10.ifotos.pl/img/0t00jpg_qwqhwhq.jpg "matches history")
+![matches history filtered page](https://s2.ifotos.pl/img/0t02jpg_qwqhwrp.jpg "matches history filtered")
 
 * **_RULES_**
   - showing the rules of the play in the application
@@ -69,7 +69,7 @@ Application for typing results of football matches. It works for the current foo
       - date, teams, user's type, current result of the match, blinking green light - for the games in play
     - showing the sum of the user's points
 
-![typing history page](https://zapodaj.net/images/eb6531253a4f0.jpg "typing history page")
+![typing history page](https://s10.ifotos.pl/img/0t03jpg_qwqhwrh.jpg "typing history page")
 
 * **_USER DATA CHANGE_**
   - allowing the user to change his e-mail address, change his password, and turn OFF/ON mailing service. 
@@ -103,11 +103,11 @@ The application uses PHPMailer for sending e-mail - in the case of user's forgot
 
 Page is fully responsive, there should be no troubles in accessing it on any device. Media queries in css change page layout accordingly to the device viewport size.
 
-![mobile version](https://zapodaj.net/images/06dafc11d547f.jpg "mobile version")
+![mobile version](https://s5.ifotos.pl/img/m01jpg_qwqhwrr.jpg "mobile version")
 
-![mobile version](https://zapodaj.net/images/5952dc214b9fc.jpg "mobile version")
+![mobile version](https://s5.ifotos.pl/img/m03jpg_qwqhwrx.jpg "mobile version")
 
-![mobile version](https://zapodaj.net/images/d1a6cfcb5908c.jpg "mobile version")
+![mobile version](https://s2.ifotos.pl/img/m02jpg_qwqhwre.jpg "mobile version")
 
 ## Installation
 
